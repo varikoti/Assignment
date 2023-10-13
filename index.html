@@ -3,112 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survey Form</title>
+    <title>Sort Array</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h2>Survey Form</h2>
-        <form id="survey-form">
-            <div class="form-group">
-                <label for="first-name" class="label">First Name:</label>
-                <input type="text" id="first-name" name="first-name" required>
-            </div>
-            <div class="form-group">
-                <label for="last-name" class="label">Last Name:</label>
-                <input type="text" id="last-name" required>
-            </div>
-            <div class="form-group">
-                <label for="date-of-birth" class="label">Date of Birth:</label>
-                <input type="date" id="date-of-birth" name="date-of-birth" required>
-            </div>
-            <div class="form-group">
-                <label for="country" class="label">Country:</label>
-                <select id="country" name="country" required>
-                    <option value="INDIA">INDIA</option>
-                    <option value="USA">USA</option>
-                    <option value="Canada">Canada</option>
-                    <option value="UK">UK</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="label">Gender</label>
-                <input type="radio" id="Female" name="gender" value="Female"><label for="Female">Female</label>
-                <input type="radio" id="Male" name="gender" value="Male"><label for="Male">Male</label>
-            </div>
-            <div class="form-group">
-                <label for="profession" class="label">Profession:</label>
-                <input type="text" id="profession" name="profession" required>
-            </div>
-            <div class="form-group">
-                <label for="email" class="label">Email:</label>
-                <input type="text" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="mobile" class="label">Mobile Number:</label>
-                <input type="tel" id="mobile" name="mobile" required>
-            </div>
-            <div class="form-group">
-                <button type="button" id="submit-button">Submit</button>
-                <button type="button" id="reset-button">Reset</button>
-            </div>
-        </form>
-    </div>
-    <div class="popup" id="popup">
-        <div class="popup-content" id="popup-content">
-            <h2>Submitted!</h2>
-            <div id="submitted-data"></div>
-            <button type="button" id="close-popup">Close</button>
-        </div>
-    </div>
+    <h1>Sort Array in Desecnding Order</h1>
+
     <script>
-        const form = document.getElementById('survey-form');
-        const submitButton = document.getElementById('submit-button');
-        const resetButton = document.getElementById('reset-button');
-        const popup = document.getElementById('popup');
-        const popupContent=document.getElementById('popup-content');
-        const closePopup=document.getElementById('close-popup');
+        let arr = [10, 87, 98, 22, 54, 43, -12, 11];
+        console.log("Unsorted Array:", arr);
+        arr.sort((a, b) => b - a);
+        console.log("Sorted Array:", arr);
 
-        submitButton.addEventListener('click', function(){
-            if(form.checkValidity()){
-                const submittedData = {};
-                const formData = new FormData(form);
-                formData.forEach((value, key) => {
-                    submittedData[key] = value;
-                });
-                displayPopup(submittedData);
-                form.reset();
-            }else {
-                alert('Please fill out all required fields before submitting.');
-            }
-        });
-
-        resetButton.addEventListener('click', function() {
-            form.reset();
-        });
-
-        closePopup.addEventListener('click', function() {
-            popup.style.display = 'none';
-        });
-        function displayPopup(data) {
-            const submittedDataDiv = document.getElementById('submitted-data');
-            submittedDataDiv.innerHTML='';
-
-            for(const key in data) {
-                const label = document.createElement('span');
-                label.classList.add('label');
-                label.textContent = key +': ';
-
-                const value = document.createElement('span');
-                value.textContent= data[key];
-
-                submittedDataDiv.appendChild(label);
-                submittedDataDiv.appendChild(value);
-                submittedDataDiv.appendChild(document.createElement('br '));
-            }
-
-            popup.style.display = 'block';
-        }
     </script>
+    
 </body>
 </html>
